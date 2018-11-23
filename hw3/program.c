@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+/* Author : Mehmet Cakmak ssss */
+
 int main(){
 	int i,j,kutu,k,deneme=0;
 	char bosluk[100]=" ";
