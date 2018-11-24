@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
 
 void myPrint(int dizi[][6][2]){
 
@@ -20,9 +21,11 @@ void myPrint(int dizi[][6][2]){
 }
 
 
-int main(){
+int main(int argc,char argv[][2]){
 
-	int arr[2][6][2];
+	printf("sayısı : %d",argc);
+	printf("%s,%s\n",argv[0],argv[1]);
+	/*int arr[2][6][2];
 	
 	srand((unsigned)time(NULL));
 	
@@ -33,7 +36,7 @@ int main(){
 	}
 	
 	myPrint(arr);
-
+	*/
 	return 0;
 }
 
