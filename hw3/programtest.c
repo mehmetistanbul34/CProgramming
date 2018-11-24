@@ -3,15 +3,15 @@
 #include<time.h>
 
 #define ARR_X  3
-#define ARR_Y  3
-#define ARR_SIZE 9
+#define ARR_Y  6
+#define ARR_SIZE 18
 
 int validation(int arr[]);
 void myPrintArr(int arr[]);
 
 int main(){
 	srand((unsigned)time(NULL));
-	int dizi[]={4,5,8,6,7,1,3,0,2};
+	int dizi[]={4,5,8,6,7,1,3,0,2,9,10,11,12,13,14,15,16,17};
 	printf("size_t sum : %d, item  : %d \n",(int)sizeof(dizi),(int)sizeof(dizi[0]));
 	myPrintArr(dizi);
 	for(int index = 0;index<100;index++){
@@ -73,7 +73,7 @@ int main(){
 			space_index = tmp[my_random];
 		}
 		
-		if(row==(ARR_Y-1) && column==0){  // RIGHT BOTTOM
+		if(row==(ARR_Y-1) && column==(ARR_X-1)){  // RIGHT BOTTOM
 			int tmp[2] = { row*ARR_X+column-1, (row-1)*ARR_X+column};
 			int my_random = rand()%2;
 			dizi[space_index] = dizi[tmp[my_random]];
@@ -81,7 +81,7 @@ int main(){
 			space_index = tmp[my_random];
 		}
 		
-		if(row==0 && column!=0){   //MIDDLE TOP
+		if(row==0 && !(column==0 || column==(ARR_X-1))){   //MIDDLE TOP
 			int tmp[3] = { row*ARR_X+column+1,row*ARR_X+column-1, (row+1)*ARR_X+column};
 			int my_random = rand()%3;
 			dizi[space_index] = dizi[tmp[my_random]];
@@ -89,7 +89,7 @@ int main(){
 			space_index = tmp[my_random];
 		}
 		
-		if(row==0 && column==(ARR_X-1)){  // RIGHT MIDDLE
+		if(!(row==0 || row==(ARR_Y-1)) && column==(ARR_X-1)){  // RIGHT MIDDLE
 			int tmp[3] = { row*ARR_X+column-1, (row+1)*ARR_X+column,(row-1)*ARR_X+column};
 			int my_random = rand()%3;
 			dizi[space_index] = dizi[tmp[my_random]];
@@ -97,7 +97,7 @@ int main(){
 			space_index = tmp[my_random];
 		}
 		
-		if(row==(ARR_Y-1) && column==0){  // LEFT MIDDLE
+		if(!(row==0 || row==(ARR_Y-1)) && column==0){  // LEFT MIDDLE
 			int tmp[3] = { row*ARR_X+column+1, (row+1)*ARR_X+column,(row-1)*ARR_X+column};
 			int my_random = rand()%3;
 			dizi[space_index] = dizi[tmp[my_random]];
@@ -105,7 +105,7 @@ int main(){
 			space_index = tmp[my_random];
 		}
 		
-		if(row==(ARR_Y-1) && column==0){  // MIDDLE BOTTOM
+		if(row==(ARR_Y-1) && !(column==0 || column==(ARR_X-1))){  // MIDDLE BOTTOM
 			int tmp[3] = { row*ARR_X+column+1,row*ARR_X+column-1, (row-1)*ARR_X+column};
 			int my_random = rand()%3;
 			dizi[space_index] = dizi[tmp[my_random]];
@@ -113,7 +113,7 @@ int main(){
 			space_index = tmp[my_random];
 		}
 		
-		if((row!=0 || row!=(ARR_Y-1)) && (column != (ARR_X-1) || column!=0)){  // MIDDLE BOTTOM
+		if(!(row==0 || row==(ARR_Y-1)) && !(column == (ARR_X-1) || column==0)){  // MIDDLE BOTTOM
 			int tmp[4] = { row*ARR_X+column+1,row*ARR_X+column-1, (row-1)*ARR_X+column,(row+1)*ARR_X+column};
 			int my_random = rand()%4;
 			dizi[space_index] = dizi[tmp[my_random]];
@@ -121,7 +121,7 @@ int main(){
 			space_index = tmp[my_random];
 		}
 		
-		
+		//getchar();
 	}
 	printf("Sonuc hesaplandı : %d\n",changedNumber);
 	myPrintArr(dizi);
@@ -131,7 +131,9 @@ int main(){
 }
 
 int validation(int arr[]){
-	for(int i=0;i<ARR_SIZE;i++){
+	for(int i=0;i<ARR_SIZE-1;i++){
+		if(arr[i] ==0)
+			continue;
 		if(arr[i]>arr[i+1])
 			return -1;
 			
