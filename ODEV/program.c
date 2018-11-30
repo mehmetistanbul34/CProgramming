@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
 
 #define ARR_X 3
 #define ARR_Y 3
@@ -29,11 +31,14 @@ int main(){
 }
 
 void changeSpace(int arr[9],int spaceIndex){
+
+	srand((unsigned)time(NULL));
+
 	int row=spaceIndex/ARR_X;
 	int column=spaceIndex%ARR_Y;
 	
-	printf("Row : %d\tColumn : %d\n",row,column);
-	if(row==0 && column==0){
+	printf("SpaceIndex  :%d\tRow : %d\tColumn : %d\n",spaceIndex,row,column);
+	if(row==0 && column==0){	// Left Top Corner
 		int tmp[2] = { row+1,column+1};
 			int random = rand()%2;
 			arr[spaceIndex] = arr[tmp[random]];
@@ -41,7 +46,7 @@ void changeSpace(int arr[9],int spaceIndex){
 			spaceIndex = tmp[random];
 	}
 	
-	if(row==0 && column==2){
+	if(row==0 && column==2){	// Right Top Corner
 		int tmp[2] = { row+1,column-1};
 			int random = rand()%2;
 			arr[spaceIndex] = arr[tmp[random]];
@@ -49,7 +54,7 @@ void changeSpace(int arr[9],int spaceIndex){
 			spaceIndex = tmp[random];
 	}
 	
-	if(row==2 && column==0){
+	if(row==2 && column==0){	// Left Bottom Corner
 		int tmp[2] = { row-1,column+1};
 			int random = rand()%2;
 			arr[spaceIndex] = arr[tmp[random]];
@@ -57,7 +62,7 @@ void changeSpace(int arr[9],int spaceIndex){
 			spaceIndex = tmp[random];
 	}
 	
-	if(row==2 && column==2){
+	if(row==2 && column==2){	// Right Bottom Corner
 		int tmp[2] = { row-1,column-1};
 			int random = rand()%2;
 			arr[spaceIndex] = arr[tmp[random]];
@@ -66,23 +71,23 @@ void changeSpace(int arr[9],int spaceIndex){
 	}
 	
 	
-	if(row==0 && column==1){
-		int tmp[3] = { row+1,column+1,column-1};
+	if(row==0 && column==1){	// Top Midle
+		int tmp[3] = { row+1,column-1,column+1};
 			int random = rand()%3;
 			arr[spaceIndex] = arr[tmp[random]];
 			arr[tmp[random]] = 0;
 			spaceIndex = tmp[random];
 	}
 	
-	if(row==1 && column==0){
-		int tmp[3] = { row-1,row+1,column+1};
+	if(row==1 && column==0){	// Left Midle
+		int tmp[3] = { row+1,row-1,column+1};
 			int random = rand()%3;
 			arr[spaceIndex] = arr[tmp[random]];
 			arr[tmp[random]] = 0;
 			spaceIndex = tmp[random];
 	}
 	
-	if(row==1 && column==2){
+	if(row==1 && column==2){	// Right Midle
 		int tmp[3] = { row+1,row-1,column-1};
 			int random = rand()%3;
 			arr[spaceIndex] = arr[tmp[random]];
@@ -90,15 +95,16 @@ void changeSpace(int arr[9],int spaceIndex){
 			spaceIndex = tmp[random];
 	}
 	
-	if(row==2 && column==1){
-		int tmp[3] = { row+1,column-1,column+1};
+	if(row==2 && column==1){	// Bottom Midle
+		int tmp[3] = { row-1,column-1,column+1};
 			int random = rand()%3;
 			arr[spaceIndex] = arr[tmp[random]];
 			arr[tmp[random]] = 0;
 			spaceIndex = tmp[random];
 	}
-	if(row==1 && column==1){
-		int tmp[4] = { row-1,row+1,column-1,column+1};
+	
+	if(row==1 && column==1){	// Midle
+		int tmp[4] = { row+1,row-1,column-1,column+1};
 			int random = rand()%4;
 			arr[spaceIndex] = arr[tmp[random]];
 			arr[tmp[random]] = 0;
