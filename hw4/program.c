@@ -121,8 +121,7 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		arr[spaceIndex]=arr[tmp[random]];
 		arr[tmp[random]]=0;
 		spaceIndex=tmp[random];	
-	}
-	
+	}	
 }
 
 void myPrint(int arr[9]){	// Diziyi ekrana bastıran fonksiyon
