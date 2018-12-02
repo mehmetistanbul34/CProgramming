@@ -99,6 +99,14 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
+	if(row==1 && !(column==0 || column==1)){	// Right Middle
+		int tmp[3]={row*ARR_X+column-1,(row+1)*ARR_X+column,(row-1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
+		int random = rand()%3;	// Random olarak 1 veya 2 sayılarından birini seçer 
+		arr[spaceIndex]=arr[tmp[random]];
+		arr[tmp[random]]=0;
+		spaceIndex=tmp[random];	
+	}
+	
 }
 
 void myPrint(int arr[9]){	// Diziyi ekrana bastıran fonksiyon
