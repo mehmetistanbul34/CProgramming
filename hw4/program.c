@@ -82,7 +82,15 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		arr[tmp[random]]=0;
 		spaceIndex=tmp[random];	
 	}
-
+	
+	if(row==0 && !(column==0 || column==ARR_X-1)){	// Top Middle
+		int tmp[3]={row*ARR_X+column+1,row*ARR_X+column-1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
+		int random = rand()%3;	// Random olarak 1 veya 2 sayılarından birini seçer 
+		arr[spaceIndex]=arr[tmp[random]];
+		arr[tmp[random]]=0;
+		spaceIndex=tmp[random];	
+	}
+	
 }
 
 void myPrint(int arr[9]){	// Diziyi ekrana bastıran fonksiyon
