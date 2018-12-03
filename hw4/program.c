@@ -13,7 +13,7 @@ void myPrint(int arr[9]);
 int main(){
 	srand((unsigned)time(NULL));
 	
-	int dizi[9]={4,5,8,6,7,1,3,0,2};	
+	int dizi[9]={8,6,3,4,0,2,1,5,7};	
 	
 	int i,spaceIndex=0;
 	for(i=0;i<ARR_SIZE;i++){
@@ -25,10 +25,11 @@ int main(){
 	myPrint(dizi);
 	int ChangeNumber=0;
 	while(siralimi(dizi)<0){
-	ChangeNumber++;
-	printf("Change Number : %d\n",ChangeNumber);
-	chandeSpace(dizi,spaceIndex);
-	myPrint(dizi);
+		ChangeNumber++;
+		printf("Change Number : %d\n",ChangeNumber);
+		chandeSpace(dizi,spaceIndex);
+		myPrint(dizi);
+		getchar();
 	}
 	
 	
@@ -59,7 +60,7 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==0 && column==ARR_X-1){	// Right Top Corner
+	if(row==0 && column==(ARR_X-1)){	// Right Top Corner
 		int tmp[2]={row*ARR_X+column-1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%2;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -67,7 +68,7 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==ARR_Y-1 && column==0){	// Left Bottom Corner
+	if(row==(ARR_Y-1) && column==0){	// Left Bottom Corner
 		int tmp[2]={row*ARR_X+column+1,(row-1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%2;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -75,7 +76,7 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==ARR_Y-1 && column==ARR_X-1){	// Right Bottom Corner
+	if(row==(ARR_Y-1) && column==(ARR_X-1)){	// Right Bottom Corner
 		int tmp[2]={row*ARR_X+column-1,(row-1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%2;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -83,7 +84,7 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==0 && !(column==0 || column==ARR_X-1)){	// Top Middle
+	if(row==0 && !(column==0 || column==(ARR_X-1))){	// Top Middle
 		int tmp[3]={row*ARR_X+column+1,row*ARR_X+column-1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%3;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -91,7 +92,7 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(!(row==0 || row==ARR_Y-1) && column==0){	// Left Middle
+	if(!(row==0 || row==(ARR_Y-1)) && column==0){	// Left Middle
 		int tmp[3]={row*ARR_X+column+1,(row+1)*ARR_X+column,(row-1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%3;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -107,7 +108,7 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==ARR_Y-1 && !(column==0 || column==ARR_X-1)){	// Bottom Middle
+	if(row==(ARR_Y-1) && !(column==0 || column==(ARR_X-1))){	// Bottom Middle
 		int tmp[3]={row*ARR_X+column-1,(row-1)*ARR_X+column,row*ARR_X+column+1};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%3;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -115,9 +116,9 @@ void chandeSpace(int arr[9],int spaceIndex){	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 		
-	if(!(row==ARR_Y-1 || row==0) && !(column==0 || column==ARR_X-1)){	// Middle
-		int tmp[3]={row*ARR_X+column+1,row*ARR_X+column-1,(row-1)*ARR_X+column,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
-		int random = rand()%3;	// Random olarak 1 veya 2 sayılarından birini seçer 
+	if(!(row==(ARR_Y-1) || row==0) && !(column==0 || column==(ARR_X-1))){	// Middle
+		int tmp[4]={row*ARR_X+column+1,row*ARR_X+column-1,(row-1)*ARR_X+column,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
+		int random = rand()%4;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
 		arr[tmp[random]]=0;
 		spaceIndex=tmp[random];	
