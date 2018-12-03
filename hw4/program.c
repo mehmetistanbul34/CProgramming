@@ -5,15 +5,23 @@
 #define ARR_X 3
 #define ARR_Y 3
 #define ARR_SIZE 9
+#define FIRST_COLUMN 0
+#define LAST_COLUMN (ARR_Y-1)
+#define FIRST_ROW  0
+#define LAST_ROW (ARR_X-1)
 
-int siralimi(int arr[9]);
-void chandeSpace(int arr[9],int sapceIndex); 
-void myPrint(int arr[9]);
+#define RANDOM_2 2
+#define RANDOM_3 3
+#define RANDOM_4 4
+
+int siralimi(int arr[ARR_SIZE]);
+void chandeSpace(int arr[ARR_SIZE],int sapceIndex); 
+void myPrint(int arr[ARR_SIZE]);
 
 int main(){
 	srand((unsigned)time(NULL));
 	
-	int dizi[9]={8,6,3,4,0,2,1,5,7};	
+	int dizi[ARR_SIZE]={8,6,3,4,0,2,1,5,7};	
 	
 	int i,spaceIndex=0;
 	for(i=0;i<ARR_SIZE;i++){
@@ -48,20 +56,20 @@ int siralimi(int arr[9]){
 	return 1;
 }
 
-void chandeSpace(int arr[9],int spaceIndex){ 	// Space Change Function
+void chandeSpace(int arr[ARR_SIZE],int spaceIndex){ 	// Space Change Function
 
 	int row = spaceIndex/ARR_X;	// Faind Row
 	int column = spaceIndex%ARR_X;	// Faind Column
 	
-	if(row==0 && column==0){	// Left Top Corner
-		int tmp[2]={row*ARR_X+column+1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
-		int random = rand()%2;	// Random olarak 1 veya 2 sayılarından birini seçer 
+	if(row==0 && column==FIRST_COLUMN){	// Left Top Corner
+		int tmp[RANDOM_2]={row*ARR_X+column+1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
+		int random = rand()% RANDOM_2;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
 		arr[tmp[random]]=0;
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==0 && column==(ARR_X-1)){	// Right Top Corner
+	if(row==0 && column==LAST_COLUMN){	// Right Top Corner
 		int tmp[2]={row*ARR_X+column-1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar ==> Bu yorum yalnis burda gidilebilecek yerler bir arr'ye ataniyor.
 		int random = rand()%2;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];  //?????  burda ne yapiyorsun?
@@ -69,7 +77,7 @@ void chandeSpace(int arr[9],int spaceIndex){ 	// Space Change Function
 		spaceIndex=tmp[random];	//????? bu atamayi ne icin yaptin
 	}
 	
-	if(row==(ARR_Y-1) && column==0){	// Left Bottom Corner
+	if(row==LAST_ROW && column==FIRST_COLUMN){	// Left Bottom Corner
 		int tmp[2]={row*ARR_X+column+1,(row-1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%2;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -77,7 +85,7 @@ void chandeSpace(int arr[9],int spaceIndex){ 	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==(ARR_Y-1) && column==(ARR_X-1)){// TTTTT row==(ARR_X-1) column==(ARR_Y-1) olacak diger yerleri de kontrol et	// Right Bottom Corner
+	if(row==LAST_ROW && column==(ARR_X-1)){// TTTTT row==(ARR_X-1) column==(ARR_Y-1) olacak diger yerleri de kontrol et	// Right Bottom Corner
 		int tmp[2]={row*ARR_X+column-1,(row-1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
 		int random = rand()%2;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
@@ -85,9 +93,9 @@ void chandeSpace(int arr[9],int spaceIndex){ 	// Space Change Function
 		spaceIndex=tmp[random];	
 	}
 	
-	if(row==0 && !(column==0 || column==(ARR_X-1))){	// Top Middle
-		int tmp[3]={row*ARR_X+column+1,row*ARR_X+column-1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
-		int random = rand()%3;	// Random olarak 1 veya 2 sayılarından birini seçer 
+	if(row==0 && !(column==FIRST_COLUMN || column==(ARR_X-1))){	// Top Middle
+		int tmp[RANDOM_3]={row*ARR_X+column+1,row*ARR_X+column-1,(row+1)*ARR_X+column};	//bir yana yada bir alta kaydırılmasını sağlar
+		int random = rand()% RANDOM_3;	// Random olarak 1 veya 2 sayılarından birini seçer 
 		arr[spaceIndex]=arr[tmp[random]];
 		arr[tmp[random]]=0;
 		spaceIndex=tmp[random];	
