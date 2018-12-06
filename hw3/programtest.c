@@ -2,25 +2,25 @@
 #include<stdlib.h>
 #include<time.h>
 
-#define ARR_X  3
-#define ARR_Y  6
-#define ARR_SIZE 18
+#define ARR_X  4
+#define ARR_Y  3
+#define ARR_SIZE 12
 
 int validation(int arr[]);
 void myPrintArr(int arr[]);
 
 int main(){
 	srand((unsigned)time(NULL));
-	int dizi[]={4,5,8,6,7,1,3,0,2,9,10,11,12,13,14,15,16,17};
+	int dizi[]={4,5,8,6,7,1,3,0,2,9,10,11};
 	printf("size_t sum : %d, item  : %d \n",(int)sizeof(dizi),(int)sizeof(dizi[0]));
 	myPrintArr(dizi);
-	for(int index = 0;index<100;index++){
+	/*for(int index = 0;index<100;index++){
 		int aa1= rand()%2;
 		int aa2 = rand()%3;
 		int aa3 = rand()%4;
 		printf("aa1 : %d, aa2 : %d , aa3 : %d  \n",aa1,aa2,aa3);
 	}
-	/*for(i=0;i<10;i++){
+	for(i=0;i<10;i++){
 		if(i<=2){
 			printf("%d ",dizi[i]);
 		}else if(i>2 && printf("\n"); i<=5){
@@ -36,7 +36,7 @@ int main(){
 	int space_index=-1;
 	
 	for(int j=0;j<10;j++){
-		if(dizi[j]==0){
+		if(dizi[j]==0){	
 			space_index = j;
 		}
 	}
@@ -45,7 +45,7 @@ int main(){
 	
 	while(validation(dizi)<0){
 		changedNumber++;
-		printf("ccc : %d\n",changedNumber);
+		printf("Space İndex : %d\tChange Space : %d\n",space_index,changedNumber);
 		myPrintArr(dizi);
 		int row = space_index/ARR_X;
 		int column = space_index%ARR_X;
@@ -151,4 +151,5 @@ void myPrintArr(int arr[]){
 		else
 			printf(",");
 	}
+	printf("\n\n");
 }

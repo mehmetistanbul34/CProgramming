@@ -1,9 +1,9 @@
 all: clean build
 
-build: program.c 
-	gcc -c program.c -lm
-	gcc -o program program.o -lm
+build: programtest.c 
+	gcc -c programtest.c -lm
+	gcc -o programtest programtest.o -lm
 
 clean: 
-	rm -rf *.o program
+	rm -rf *.o programtest
 
