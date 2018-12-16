@@ -1,3 +1,7 @@
+/*
+	Bu ödev Mehmet Çakmak tarafından yapıldı.
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #define ARR_X 3
