@@ -1,24 +1,25 @@
 #include<stdio.h>
 #include<stdlib.h>
+
 #define ARR_X 3
 #define ARR_Y 3
 
 void findSpace(int const arr[][3],int spaceIndex[]);
 int validSort(int arr[][ARR_Y]);
 void changeSpace(int arr[][ARR_Y],int spaceIndex[]);
-int my_print(int arr[][3]);
+int myPrint(int arr[][3]);
 
 
 int main(){
 		//[satır][sütun]
 	int dizi[ARR_X][ARR_Y]={{8,0,7},{4,2,6},{5,1,3}};
 	
-	int spaceIndex[2] = {-1,-1}; //initialize
+	int spaceIndex[2] = {0,0}; //initialize
 		
-	while(!(validSort(dizi))){
-	printf("mehmet\n");
+	while(!validSort(dizi)){
+	
 		changeSpace(dizi,spaceIndex);
-		my_print(dizi);
+		myPrint(dizi);
 		
 		}
 		
@@ -40,12 +41,13 @@ void changeSpace(int arr[][ARR_Y],int spaceIndex[]){
 				arr[tmp[myRandom][0]][tmp[myRandom][1]] = 0;
 				row =  tmp[myRandom][0];
 				column = tmp[myRandom][1];
+				printf("Hello World");
 		}
 		
 		if(row==0 && column==2) //RULE TWO : RİGHT TOP CORNER
 		{
 			//to do.
-			int tmp[2][2] = { {row,column-1}, {row+1,column-2} }; //tmp[0][0] = row, tmp[0][1] = column+1, tmp[1][0] = row+1
+			int tmp[2][2] = { {row,column-1}, {row+1,column} }; //tmp[0][0] = row, tmp[0][1] = column+1, tmp[1][0] = row+1
 				int myRandom = rand()%2;
 				arr[row][column] = arr[tmp[myRandom][0]][tmp[myRandom][1]];
 				arr[tmp[myRandom][0]][tmp[myRandom][1]] = 0;
@@ -140,7 +142,7 @@ int validSort(int arr[][ARR_Y]){
 				continue;
 			if(arr[i][j]>arr[i][j+1])
 			{		
-				return -1;
+				return -1;																									
 			}
 		}
 	return 1;	
@@ -156,7 +158,7 @@ void findSpace(int const arr[][ARR_Y],int spaceIndex[]){
 			}	
 }
 
-int my_print(int arr[][3]){
+int myPrint(int arr[][3]){
 	for(int i=0;i<3;i++){
 		for(int j=0;j<3;j++){
 		printf("%d ",arr[i][j]);
