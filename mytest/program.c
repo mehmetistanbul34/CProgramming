@@ -1,5 +1,6 @@
 /*
 	Bu ödev Mehmet Çakmak tarafından yapıldı.
+	Bu ödeve devam edeceğim.
 */
 
 #include<stdio.h>
